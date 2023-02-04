@@ -1,9 +1,9 @@
 ﻿using System;
 using Microsoft.Maui.LifecycleEvents;
 
-namespace MHS.LifecycleExtensions
+namespace MHS.Extensions
 {
-    public static class LifecycleExtensions
+    public static class Lifecycle
     {
 
         public static void AddCustomForm(this ILifecycleBuilder builder)
@@ -28,7 +28,7 @@ namespace MHS.LifecycleExtensions
                 });
             });
 #endif
-
+#if Windows
             builder.AddWindows(wndLifeCycleBuilder =>
             {
                 wndLifeCycleBuilder.OnWindowCreated(window =>
@@ -47,7 +47,7 @@ namespace MHS.LifecycleExtensions
                     winuiAppWindow.MoveAndResize(new RectInt32(1920 / 2 - width / 2, 1080 / 2 - height / 2, width, height));
                 });
             });
-
+#endif
         }
     }
 

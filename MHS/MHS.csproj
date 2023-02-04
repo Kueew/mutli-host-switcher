@@ -1,7 +1,7 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
 	<PropertyGroup>
-		<TargetFrameworks>net7.0-android;net7.0-ios;net7.0-maccatalyst;net7.0-windows</TargetFrameworks>
+		<TargetFrameworks>net7.0-android;net7.0-ios;net7.0-maccatalyst</TargetFrameworks>
 		<OutputType>Exe</OutputType>
 		<RootNamespace>MHS</RootNamespace>
 		<UseMaui>true</UseMaui>
@@ -61,9 +61,42 @@
 	</ItemGroup>
 
 	<ItemGroup>
-	  <None Remove="LifecycleExtensions\" />
+	  <None Remove="Resources\Images\logo.svg" />
+	  <None Remove="Resources\Images\logout.svg" />
+	  <None Remove="Resources\Images\setting.svg" />
+	  <None Remove="Resources\Images\setting_on.svg" />
+	  <None Remove="Resources\Images\home.svg" />
+	  <None Remove="Resources\Images\message.svg" />
+	  <None Remove="Resources\Images\discount.svg" />
+	  <None Remove="Resources\Images\graph.svg" />
+	  <None Remove="Views\" />
+	  <None Remove="ViewModels\" />
 	</ItemGroup>
 	<ItemGroup>
-	  <Folder Include="LifecycleExtensions\" />
+	  <BundleResource Include="**/*" />
+	  <BundleResource Include="Resources\Images\*" />
+	  <BundleResource Include="**/*" />
+	  <BundleResource Include="Resources\Images\*" />
+	  <BundleResource Include="**/*" />
+	  <BundleResource Include="Resources\Images\*" />
+	  <BundleResource Include="**/*" />
+	  <BundleResource Include="Resources\Images\*" />
+	  <BundleResource Include="**/*" />
+	  <BundleResource Include="Resources\Images\*" />
+	  <BundleResource Include="**/*" />
+	  <BundleResource Include="Resources\Images\*" />
+	  <BundleResource Include="**/*" />
+	  <BundleResource Include="Resources\Images\*" />
+	  <BundleResource Include="**/*" />
+	  <BundleResource Include="Resources\Images\*" />
+	</ItemGroup>
+	<ItemGroup>
+	  <Folder Include="Views\" />
+	  <Folder Include="ViewModels\" />
+	</ItemGroup>
+	<ItemGroup>
+	  <MauiXaml Update="Views\HomeView.xaml">
+	    <SubType></SubType>
+	  </MauiXaml>
 	</ItemGroup>
 </Project>

@@ -1,6 +1,7 @@
-﻿using Microsoft.Extensions.Logging;
+﻿
+using Microsoft.Extensions.Logging;
 using Microsoft.Maui.LifecycleEvents;
-using MHS.LifecycleExtensions;
+using MHS.Extensions;
 namespace MHS;
 
 public static class MauiProgram

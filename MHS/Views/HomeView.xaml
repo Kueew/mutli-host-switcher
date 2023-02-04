@@ -1,0 +1,16 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="MHS.Views.HomeView"
+             Title="HomeView" BackgroundColor="{StaticResource Primary}">
+<ContentPage.Content>
+
+        <Grid ColumnDefinitions="2">
+            <Grid WidthRequest="220" BackgroundColor="Gold" Margin="-30">
+
+
+            </Grid>
+            <Grid Grid.Column="1" BackgroundColor="Red"></Grid>
+        </Grid>
+    </ContentPage.Content>
+</ContentPage>
