@@ -9,6 +9,17 @@ public partial class App : Application
         MainPage = new NavigationPage(new Views.HomeView());
 
     }
-   
+
+    protected override Window CreateWindow(IActivationState activationState)
+    {
+        var win = base.CreateWindow(activationState);
+        win.Width = 800;
+        win.MaximumWidth = 800;
+        win.Height = 600;
+        win.MaximumHeight = 600;
+        win.Title = "Mutli-Host Switcher";
+        return win;
+    }
+
 }
 
