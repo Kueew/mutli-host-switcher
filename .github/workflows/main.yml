@@ -1,0 +1,51 @@
+name: windowsCI
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+  workflow_dispatch:
+
+env:
+    DOTNETVERSION: 7.0.102
+    
+jobs:
+  buildWindows:
+    runs-on: windows-latest
+    
+    steps:
+      - uses: actions/checkout@v2
+      
+      - name: Setup .NET SDK ${{env.DOTNETVERSION}}
+        uses: actions/setup-dotnet@v1
+        with:
+          dotnet-version: '${{env.DOTNETVERSION}}'
+          
+      - name: Install .NET MAUI
+        shell: pwsh
+        run: |
+          & dotnet nuget locals all --clear
+          & dotnet workload install maui --source https://aka.ms/dotnet6/nuget/index.json --source https://api.nuget.org/v3/index.json
+          #        & dotnet workload install android ios maccatalyst tvos macos maui wasm-tools maui-maccatalyst --source https://aka.ms/dotnet6/nuget/index.json --source https://api.nuget.org/v3/index.json
+      
+      - name: Decrypt PFX File
+        run: |
+          echo "${{ secrets.WINDOWS_PFX_FILE }}" > cert.pfx.asc
+          certutil -decode cert.pfx.asc cert.pfx
+          
+      - name: Add Cert to Store
+        run: certutil -user -q -p ${{ secrets.WINDOWS_PFX_PASSWORD }} -importpfx cert.pfx NoRoot
+
+
+      # https://docs.microsoft.com/en-us/dotnet/maui/windows/deployment/overview
+      - name: Build Windows MSIX
+        run: |
+          cd .\
+          dotnet publish -c Release -f:net7.0-windows10.0.19041.0 /p:GenerateAppxPackageOnBuild=true /p:AppxPackageSigningEnabled=true /p:PackageCertificateThumbprint="${{ secrets.WINDOWS_PFX_THUMBPRINT }}"
+      
+      - name: Upload Build Artifacts
+        uses: actions/upload-artifact@v3.1.0
+        with:
+          path: .\**\AppPackages\**\*.*
