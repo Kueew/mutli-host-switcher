@@ -1,6 +1,9 @@
 ﻿using System;
 using Microsoft.Maui.LifecycleEvents;
+
+#if MACCATALYST
 using UIKit;
+#endif
 
 namespace MHS.Extensions
 {

@@ -2,9 +2,9 @@
 
 public partial class HomeView : ContentPage
 {
-	public HomeView()
-	{
-		InitializeComponent();
-       // NavigationPage.SetHasNavigationBar(this, false);
+    public HomeView()
+    {
+        InitializeComponent();
+        NavigationPage.SetHasNavigationBar(this, false);
     }
 }
