@@ -2,8 +2,6 @@
 
 	<PropertyGroup>
 		<TargetFrameworks>net7.0-android;net7.0-ios;net7.0-maccatalyst</TargetFrameworks>
-		<TargetFrameworks Condition="$([MSBuild]::IsOSPlatform('windows'))">$(TargetFrameworks);net7.0-windows10.0.19041.0</TargetFrameworks>
-
 		<OutputType>Exe</OutputType>
 		<RootNamespace>MHS</RootNamespace>
 		<UseMaui>true</UseMaui>
@@ -14,8 +12,8 @@
 		<ApplicationTitle>MHS</ApplicationTitle>
 
 		<!-- App Identifier -->
-		<ApplicationId>com.companyname.mhs</ApplicationId>
-		<ApplicationIdGuid>fbea45bb-fb69-43c8-8a79-dbf15e9dc9f2</ApplicationIdGuid>
+		<ApplicationId>com.kuew.mhs</ApplicationId>
+		<ApplicationIdGuid>2f5d3e57-cf69-4539-8ce9-15329c6f4caf</ApplicationIdGuid>
 
 		<!-- Versions -->
 		<ApplicationDisplayVersion>1.0</ApplicationDisplayVersion>
@@ -27,18 +25,11 @@
 		<SupportedOSPlatformVersion Condition="$([MSBuild]::GetTargetPlatformIdentifier('$(TargetFramework)')) == 'windows'">10.0.17763.0</SupportedOSPlatformVersion>
 		<TargetPlatformMinVersion Condition="$([MSBuild]::GetTargetPlatformIdentifier('$(TargetFramework)')) == 'windows'">10.0.17763.0</TargetPlatformMinVersion>
 		<SupportedOSPlatformVersion Condition="$([MSBuild]::GetTargetPlatformIdentifier('$(TargetFramework)')) == 'tizen'">6.5</SupportedOSPlatformVersion>
-		
-		<Description>Mutli-Host Switcher</Description>
+		<TargetFramework>net7.0-maccatalyst</TargetFramework>
 	</PropertyGroup>
 
 	<PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Debug|net7.0-ios|AnyCPU'">
 	  <CreatePackage>false</CreatePackage>
-	</PropertyGroup>
-	<PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Release|net7.0-ios|AnyCPU'">
-	  <CreatePackage>false</CreatePackage>
-	</PropertyGroup>
-	<PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
-	  <WarningLevel>4</WarningLevel>
 	</PropertyGroup>
 	<PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Debug|net7.0-maccatalyst|AnyCPU'">
 	  <CreatePackage>false</CreatePackage>
@@ -63,38 +54,12 @@
 	</ItemGroup>
 
 	<ItemGroup>
-	  <None Remove="Resources\Images\logo.svg" />
-	  <None Remove="Resources\Images\logout.svg" />
-	  <None Remove="Resources\Images\setting.svg" />
-	  <None Remove="Resources\Images\setting_on.svg" />
-	  <None Remove="Resources\Images\home.svg" />
-	  <None Remove="Resources\Images\message.svg" />
-	  <None Remove="Resources\Images\discount.svg" />
-	  <None Remove="Resources\Images\graph.svg" />
+	  <None Remove="Extensions\" />
 	  <None Remove="Views\" />
-	  <None Remove="ViewModels\" />
 	</ItemGroup>
 	<ItemGroup>
-	  <BundleResource Include="**/*" />
-	  <BundleResource Include="Resources\Images\*" />
-	  <BundleResource Include="**/*" />
-	  <BundleResource Include="Resources\Images\*" />
-	  <BundleResource Include="**/*" />
-	  <BundleResource Include="Resources\Images\*" />
-	  <BundleResource Include="**/*" />
-	  <BundleResource Include="Resources\Images\*" />
-	  <BundleResource Include="**/*" />
-	  <BundleResource Include="Resources\Images\*" />
-	  <BundleResource Include="**/*" />
-	  <BundleResource Include="Resources\Images\*" />
-	  <BundleResource Include="**/*" />
-	  <BundleResource Include="Resources\Images\*" />
-	  <BundleResource Include="**/*" />
-	  <BundleResource Include="Resources\Images\*" />
-	</ItemGroup>
-	<ItemGroup>
+	  <Folder Include="Extensions\" />
 	  <Folder Include="Views\" />
-	  <Folder Include="ViewModels\" />
 	</ItemGroup>
 	<ItemGroup>
 	  <MauiXaml Update="Views\HomeView.xaml">

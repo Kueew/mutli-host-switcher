@@ -2,27 +2,47 @@
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="MHS.Views.HomeView"
-             Title="HomeView">
+             BackgroundColor="Transparent"
+              
+             >
 
     <ContentPage.Content>
-        <Grid ColumnDefinitions="180,*">
-            <!--Left Menu-->
-            <Grid RowDefinitions="40,*">
-              
-
-                <Grid Margin="0,0,0,0">
-                    <Ellipse Fill="#7f7cf1"  WidthRequest="40" HeightRequest="40"></Ellipse>
-                    <Label Text="HMS" TextColor="White"   />
-                </Grid>
-                <CheckBox ></CheckBox>
+        <Grid ColumnDefinitions="200,*" >
+            <!-- Start: GridColum Left-->
+            <Grid
+                RowDefinitions="60,80,Auto,*"
+                Background="{StaticResource SecundaryBackgroundColor}" >
+                <StackLayout Orientation="Horizontal" HorizontalOptions="CenterAndExpand" VerticalOptions="Center">
+                    <Path Data="{DynamicResource logo}"
+                          Margin="16,0,0,0"
+                          Fill="{StaticResource Primary}"
+                          WidthRequest="25"
+                          HeightRequest="25"
+                          HorizontalOptions="Start"/>
+                    <Label Text="Host Switcher"
+                           FontAttributes="Bold"
+                           TextColor="{StaticResource Primary}"
+                           Margin="10,0,15,0"
+                           FontSize="18"
+                           VerticalOptions="Center"
+                           HorizontalOptions="EndAndExpand"/>
+                </StackLayout>
+                 <!-- Menu -->
 
             </Grid>
+            <!-- End: GridColum Left-->
 
-            <!--Main Section-->
+            <!-- Start: GridColumn Rigth -->
             <Grid Grid.Column="1">
-              
-            </Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="60"/>
+                    <RowDefinition/>
+                </Grid.RowDefinitions>
 
+
+            </Grid>
+            <!-- Start: GridColumn Rigth -->
         </Grid>
+
     </ContentPage.Content>
 </ContentPage>
